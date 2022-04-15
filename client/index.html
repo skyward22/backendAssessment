@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assessment-backend</title>
+    <link rel="stylesheet" href ="styles.css">
+
+  </head>
+  <body class="container">
+    <button id="fortuneButton">Press for your fortune</button>
+    
+    <header>
+      <h1>Let's see if the actors have better luck with your ratings!</h1>
+    </header>
+    <main>
+    
+      <form>
+          <input
+              type='text'
+              id="actor-name"
+              placeholder="What's the actor's name?"/>
+          <input
+            type = 'text'
+            id="img"
+            placeholder="Paste an image URL"/>
+
+          <section id="ratings-container>
+            <p>Rate the actor:</p>
+            <div id="radio-container">
+                  <label for="one">
+                      <input
+                          type="radio"
+                          names="ratings"
+                          value="1"
+                          id="one"/>
+                      1
+                  </label>
+                  <label for="two">
+                      <input
+                          type="radio"
+                          names="ratings"
+                          value="2"
+                          id="two"/>
+                      2
+                  </label>
+                  <label for="three">
+                      <input
+                          type="radio"
+                          names="ratings"
+                          value="3"
+                          id="three"/>
+                      3
+                  </label>
+                  <label for="four">
+                      <input
+                          type="radio"
+                          names="ratings"
+                          value="4"
+                          id="four"/>
+                      4
+                  </label>
+                  <label for="five">
+                      <input
+                          type="radio"
+                          names="ratings"
+                          value="5"
+                          id="five"/>
+                      5
+                  </label>
+
+            </div>
+
+          
+          </section>
+          
+          <button>add actor</button>
+
+      </form>
+
+      <section id="actors-container"></section>
+
+
+
+    </main>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
