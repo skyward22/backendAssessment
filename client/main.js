@@ -1,4 +1,3 @@
-
 document.getElementById("fortuneButton").onclick = function () {
     axios.get("http://localhost:4000/api/actors/")
         .then(function (response) {
@@ -10,7 +9,7 @@ document.getElementById("fortuneButton").onclick = function () {
 const actorsContainer = document.querySelector('#actors-container')
 const form = document.querySelector('form')
 
-const baseURL = `http://localhost:4000/api/actors`
+const baseURL = `http://localhost:4000/api/actor`
 
 const actorsCallback = ({ data: actors }) => displayActors(actors)
 const errCallback = err => console.log(err.response.data)
@@ -23,19 +22,19 @@ const updateActor = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(act
 function submitHandler(e) {
     e.preventDefault()
 
-    let title = document.querySelector('#actor-name')
+    let name = document.querySelector('#actor-name')
     let rating = document.querySelector('input[name="ratings"]:checked')
     let imageURL = document.querySelector('#img')
 
     let bodyObj = {
-        names: names.value,
+        name: name.value,
         rating: rating.value, 
         imageURL: imageURL.value
     }
 
     createActor(bodyObj)
 
-    names.value = ''
+    name.value = ''
     rating.checked = false
     imageURL.value = ''
 }
