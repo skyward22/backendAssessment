@@ -9,7 +9,7 @@ app.use(express.json()); // When we want to be able to accept JSON.
 app.use(cors());
 
 
-app.get("/api/actors", (req, res) => {
+app.get("/api/fortune", (req, res) => {
   const compliments = ["A fresh start will put you on your way.",
            "A friend asks only for your time not your money.",
            "A friend is a present you give yourself.",

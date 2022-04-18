@@ -1,5 +1,5 @@
 document.getElementById("fortuneButton").onclick = function () {
-    axios.get("http://localhost:4000/api/actors/")
+    axios.get("http://localhost:4000/api/fortune/")
         .then(function (response) {
           const data = response.data;
           alert(data);
@@ -9,7 +9,7 @@ document.getElementById("fortuneButton").onclick = function () {
 const actorsContainer = document.querySelector('#actors-container')
 const form = document.querySelector('form')
 
-const baseURL = `http://localhost:4000/api/actor`
+const baseURL = `http://localhost:4000/api/actors`
 
 const actorsCallback = ({ data: actors }) => displayActors(actors)
 const errCallback = err => console.log(err.response.data)
@@ -17,13 +17,14 @@ const errCallback = err => console.log(err.response.data)
 const getAllActors = () => axios.get(baseURL).then(actorsCallback).catch(errCallback)
 const createActor = body => axios.post(baseURL, body).then(actorsCallback).catch(errCallback)
 const deleteActor = id => axios.delete(`${baseURL}/${id}`).then(actorsCallback).catch(errCallback)
-const updateActor = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(actorCallback).catch(errCallback)
+const updateActor = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(actorsCallback).catch(errCallback)
 
 function submitHandler(e) {
     e.preventDefault()
 
     let name = document.querySelector('#actor-name')
-    let rating = document.querySelector('input[name="ratings"]:checked')
+    // let rating = document.querySelector('input[name="ratings"]:checked')
+    const rating = document.querySelector('input[type=radio]:checked')
     let imageURL = document.querySelector('#img')
 
     let bodyObj = {
@@ -44,7 +45,7 @@ function createActorCard(actor) {
     actorCard.classList.add('actor-card')
 
     actorCard.innerHTML = `<img alt='actor cover' src=${actor.imageURL} class="actor-cover"/>
-    <p class="actor-title">${actor.title}</p>
+    <p class="actor-title">${actor.name}</p>
     <div class="btns-container">
         <button onclick="updateActor(${actor.id}, 'minus')">-</button>
         <p class="actor-rating">${actor.rating} stars</p>
@@ -54,7 +55,7 @@ function createActorCard(actor) {
     `
 
 
-    ActorsContainer.appendChild(actorCard)
+    actorsContainer.appendChild(actorCard)
 }
 
 function displayActors(arr) {

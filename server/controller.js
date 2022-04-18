@@ -25,9 +25,9 @@ module.exports ={
     updateActor: (req, res) => {
         const {id} = req.params;
         const {type} = req.body;
-        let index = actor.findIndex(elem => +elem.id === +id);
+        let index = actors.findIndex(elem => +elem.id === +id);
         console.log(type);
-        if(type === 'minus' && actor[index].rating > 0){
+        if(type === 'minus' && actors[index].rating > 0){
             actors[index].rating -= 1;
             res.status(200).send(actors);
         } else if(type === 'plus' && actors[index].rating < 5){
